@@ -639,8 +639,8 @@ def rtt_application_smartphone_pdf():
                 for conn_id in data[co.S2D]:
                     rtts[cond] += data[co.S2D][conn_id]
 
-    co.density_plot({k: v for k, v in rtts.iteritems() if k.startswith('TCP')}, "RTT seen by smartphone [ms]", color, graph_full_path_tcp, xlim=400.0)
-    co.density_plot({k: v for k, v in rtts.iteritems() if k.startswith('MPTCP')}, "RTT seen by smartphone [ms]", color, graph_full_path_mptcp, xlim=400.0)
+    co.density_plot({k: v for k, v in rtts.iteritems() if 'WiFi' in k or '3G' in k}, "RTT seen by smartphone [ms]", color, graph_full_path_tcp, xlim=400.0, bold=[mptcp_3g, mptcp_4g])
+    co.density_plot({k: v for k, v in rtts.iteritems() if 'WiFi' in k or '4G' in k}, "RTT seen by smartphone [ms]", color, graph_full_path_mptcp, xlim=400.0, bold=[mptcp_3g, mptcp_4g])
 
 
 # cellular_percentage_boxplot()
