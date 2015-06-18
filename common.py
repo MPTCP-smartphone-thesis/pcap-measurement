@@ -961,7 +961,7 @@ def density_plot(data, xlabel, color, graph_fname, xlim=None, bold=[]):
             density.covariance_factor = lambda: .25
             density._compute_covariance()
             if condition in bold:
-                plt.plot(xs, density(xs), color=color[condition], label=condition, linewidth=4)
+                plt.plot(xs, density(xs), color=color[condition], label=condition, linewidth=4, alpha=0.8)
             else:
                 plt.plot(xs, density(xs), color=color[condition], label=condition)
 
@@ -969,6 +969,8 @@ def density_plot(data, xlabel, color, graph_fname, xlim=None, bold=[]):
 
     if xlim:
         plt.xlim([0.0, xlim])
+
+    plt.ylim(max=0.045)
 
     plt.xlabel(xlabel, fontsize=18)
     plt.ylabel("Density function", fontsize=18)
