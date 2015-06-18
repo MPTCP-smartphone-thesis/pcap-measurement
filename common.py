@@ -943,7 +943,7 @@ def scatter_plot_with_direction(data, xlabel, ylabel, color, sums_dir_exp, base_
             scatter_plot(data_dir, xlabel, ylabel, color, sums_dir_exp, os.path.splitext(base_graph_name)[0] + "_" + direction, plot_identity=plot_identity, log_scale_x=log_scale_x, log_scale_y=log_scale_y, y_to_one=y_to_one, label_order=label_order)
 
 
-def density_plot(data, xlabel, color, graph_fname, xlim=None):
+def density_plot(data, xlabel, color, graph_fname, xlim=None, bold=[]):
     plt.figure()
     plt.clf()
 
@@ -960,7 +960,10 @@ def density_plot(data, xlabel, color, graph_fname, xlim=None):
             xs = np.linspace(0, max_value, 1500)
             density.covariance_factor = lambda: .25
             density._compute_covariance()
-            plt.plot(xs, density(xs), color=color[condition], label=condition)
+            if condition in bold:
+                plt.plot(xs, density(xs), color=color[condition], label=condition, linewidth=4)
+            else:
+                plt.plot(xs, density(xs), color=color[condition], label=condition)
 
     plt.legend(loc='upper right')
 
