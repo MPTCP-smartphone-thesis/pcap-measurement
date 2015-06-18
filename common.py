@@ -970,7 +970,7 @@ def density_plot(data, xlabel, color, graph_fname, xlim=None, bold=[]):
     if xlim:
         plt.xlim([0.0, xlim])
 
-    plt.ylim(max=0.045)
+    plt.ylim(ymax=0.045)
 
     plt.xlabel(xlabel, fontsize=18)
     plt.ylabel("Density function", fontsize=18)
